@@ -1,11 +1,11 @@
 import click
 
 
-@click.group()
-def cli():
-    pass
-
-@cli.command()
-@click.option('-n', '--name', type=str, help='Name to greet', default='World')
+@click.command()
+@click.option(
+    '--name', '-n',
+    help='your API key for the OpenWeatherMap API',
+)
 def hello(name):
     click.echo(f'Hello {name}')
+

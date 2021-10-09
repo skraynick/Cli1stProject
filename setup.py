@@ -23,6 +23,6 @@ setup(
     ],
     entry_points = '''
         [console_scripts]
-        cooltool=my_cli_app:cli
+        cooltool=my_cli_app:hello
     '''
 )
