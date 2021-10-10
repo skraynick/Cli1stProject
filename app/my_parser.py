@@ -1,10 +1,10 @@
 import requests
+import xml.dom.minidom
+import xml.etree.ElementTree as ET
+import feedparser
 
 
-
-
-
-url = 'http://isc.sans.edu/api/ip/70.91.145.10/'
+url = 'http://isc.sans.edu/api/intelfeed/'
 
 headers = {
     'User-Agent': 'srkraynick@gmail.com'
@@ -13,4 +13,13 @@ headers = {
 
 def get_response(header):
     response = requests.get(url, header)
-    print(response.text)
+    tree = ET.fromstring(response.content)
+
+    #print(response.content)
+    #intelfeed
+
+    for x in tree.findall('ip'):
+        item = x.find('ip').text
+        price = x.find('description').text
+        print(item, price)
+    print(tree.tag)
