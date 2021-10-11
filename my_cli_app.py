@@ -35,4 +35,5 @@ def parse(file):
 def headers(thing):
 
     requestcallvalues.requestCallValues.headers = thing
+    print(requestcallvalues.requestCallValues.headers)
     my_parser.get_response(requestcallvalues.requestCallValues.headers)
