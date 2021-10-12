@@ -1,6 +1,7 @@
 import requests
 import xml.etree.ElementTree as ET
 import geocoder
+import nmap
 
 
 url = 'http://isc.sans.edu/api/intelfeed/'
@@ -18,8 +19,14 @@ def get_response(header):
     for x in tree.findall('ip'):
         item = x.find('ip').text
         price = x.find('description').text
-        g = geocoder.ip(item)
-        print(g.location)
+
        # print(g.response)
        # print(g.current_result)
         #print(item, price)
+
+
+def find_location(ip):
+    g = geocoder.ip('199.175.213.12')
+    print(g.headers)
+    nm = nmap.PortScanner()
+    

@@ -1,5 +1,4 @@
 import click
-import parser
 
 from app import requestcallvalues, my_parser
 
@@ -37,3 +36,13 @@ def headers(thing):
     requestcallvalues.requestCallValues.headers = thing
     print(requestcallvalues.requestCallValues.headers)
     my_parser.get_response(requestcallvalues.requestCallValues.headers)
+
+
+@main.command()
+@click.option(
+    '--ip', '-i',
+    help='IP you would like to know location.',
+)
+def geolocate(ip):
+    click.echo(f'Location: {ip}')
+    print(my_parser.find_location(ip))
