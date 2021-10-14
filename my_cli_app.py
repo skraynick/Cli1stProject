@@ -34,7 +34,6 @@ def parse(file):
 def headers(thing):
 
     requestcallvalues.requestCallValues.headers = thing
-    print(requestcallvalues.requestCallValues.headers)
     my_parser.get_response(requestcallvalues.requestCallValues.headers)
 
 
@@ -46,3 +45,18 @@ def headers(thing):
 def geolocate(ip):
     click.echo(f'Location: {ip}')
     print(my_parser.find_location(ip))
+
+
+@main.command()
+@click.option(
+    '--header', '-h',
+    help='Headers, like user agent from dshield.. ex, \'User-Agent\': \'example@gmail.com\'',
+)
+@click.option(
+    '--ip', '-i',
+    help='IP target',
+)
+def ipi(header, ip):
+
+    requestcallvalues.requestCallValues.headers = header
+    my_parser.find_ip_information(ip, requestcallvalues.requestCallValues.headers)

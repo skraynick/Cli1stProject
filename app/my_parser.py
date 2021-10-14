@@ -6,10 +6,6 @@ import nmap
 
 url = 'http://isc.sans.edu/api/intelfeed/'
 
-headers = {
-    'User-Agent': 'srkraynick@gmail.com'
-}
-
 
 def get_response(header):
     response = requests.get(url, header)
@@ -26,7 +22,14 @@ def get_response(header):
 
 
 def find_location(ip):
-    g = geocoder.ip('199.175.213.12')
-    print(g.headers)
+    #g = geocoder.ip('199.175.213.12')
+    #print(g.headers)
     nm = nmap.PortScanner()
-    
+    print(nm.scan(hosts=ip))
+
+
+def find_ip_information(ip, header):
+    link_addr = 'https://www.dshield.org/api/ip/'
+    response = requests.get(link_addr + ip, header)
+    print(response.content)
+    #print(link_addr + ip)
