@@ -57,6 +57,15 @@ def geolocate(ip):
     help='IP target',
 )
 def ipi(header, ip):
-
     requestcallvalues.requestCallValues.headers = header
     my_parser.find_ip_information(ip, requestcallvalues.requestCallValues.headers)
+
+
+@main.command()
+@click.option(
+    '--header', '-h',
+    help='Header...user agent from dshield.. ex, \'User-Agent\': \'example@gmail.com\''
+)
+def topips(header):
+    requestcallvalues.requestCallValues.headers = header
+    my_parser.top_ips(header)

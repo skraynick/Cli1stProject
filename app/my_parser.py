@@ -33,3 +33,9 @@ def find_ip_information(ip, header):
     response = requests.get(link_addr + ip, header)
     print(response.content)
     #print(link_addr + ip)
+
+
+def top_ips(header):
+    link_addr = 'https://www.dshield.org/api/topips/records/10/'
+    response = requests.get(link_addr, header)
+    print(response.content)
